@@ -1,0 +1,70 @@
+Curses:
+Blindness: camera gets zoomed in for 10 seconds
+Bouncy: become bouncy for 10 seconds
+Fatigue: no dash for 10 seconds
+
+Blessings (press Q):
+Teleporter: Teleport to the center
+The key: Toggle doors
+Ghost: walk through doors for 3 seconds
+
+
+
+Summoner 1
+
+- Hey!
++ ...
+- I wanna TAKE OVER THE WORLD!!!
++ Finally, someone that actually wants t..
+- To do that I'm gonna summon a HUGE SCARE MONSTER DEMON THINGY!
++ ... here I am.
+- No... Not you. I want to summon [cool name] THE ANNIHILATOR OF THE UNIVERSE AND BEYOND. But the summoning process is... difficult. Can you help???
++ (You gotta be kidding...) Why do you need *him*?.. Maybe I coul...
+- Are _you_ THE ANNIHILATOR OF THE UNIVERSE AND BEYOND?
++ No...
+- ...
++ (I hate that guy...)
+-> (Mum dizme mini oyunu)
+
+
+Summoner 2
+
+- I lost my cat. He is somewhere in the attic. Can you find him?
++ Couldn't you do this yourself...
+- It's too dark.
++ Call him by name?..
+- He's deaf.
++ Wait for him to come out on his own?..
+- No.
++ Mayb...
+- Noooo.
+- Use your night-vision[TM]!
++ I don't have night vision...
+-> (Kedi bulma mini oyunu)
+
+Summoner 3
+
+- Help me with the dishes.
++ ... 
++ Let's just get this over with...
+
+-> (Bulaşık dizme mini oyunu)
+
+Summoner 4
+
+- Sorry... Wrong number.
++ How do you even...
+- Connection terminated.
++ It doesn't work that way.
+- Uh, I can't hear you speak a bit louder!
++ I am literally right in front of you.
+- Sorry I'm going through a tunnel right now.
++ THIS IS NOT A LANDLINE!
+- Uh... Can't you just... leave?
++ ...
+
+-> (mini oynu falan yok)
+
+
+
+

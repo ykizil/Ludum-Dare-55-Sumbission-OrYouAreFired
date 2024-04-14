@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://cken4vmkuy7e7"]
+
+[ext_resource type="Script" path="res://scripts/Teleporter.gd" id="1_0bwaq"]
+[ext_resource type="Texture2D" uid="uid://b1p6k5vcxpkbl" path="res://sprites/summon_test_assets/tele_target.png" id="2_suawe"]
+[ext_resource type="Script" path="res://scripts/teleporter/TeleportCollisionCheck.gd" id="3_1ak7h"]
+[ext_resource type="Texture2D" uid="uid://c4qdvwclo4mh4" path="res://sprites/summon_test_assets/teleport_area.png" id="4_maggq"]
+[ext_resource type="AudioStream" uid="uid://bm7xlrk0ttjeg" path="res://audio/sfx/teleportbright.wav" id="5_a3b6f"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_farmk"]
+radius = 8.0
+
+[node name="Teleporter" type="Node2D"]
+top_level = true
+script = ExtResource("1_0bwaq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.196078)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_suawe")
+
+[node name="CooldownTimer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[node name="TeleportCollisionCheck" type="Area2D" parent="."]
+script = ExtResource("3_1ak7h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TeleportCollisionCheck"]
+shape = SubResource("CircleShape2D_farmk")
+
+[node name="TeleportAreaIndicator" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.392157)
+top_level = true
+scale = Vector2(0.875, 0.875)
+texture = ExtResource("4_maggq")
+
+[node name="TimeLeft" type="Label" parent="TeleportAreaIndicator"]
+offset_left = 201.143
+offset_top = 192.0
+offset_right = 241.143
+offset_bottom = 252.0
+theme_override_font_sizes/font_size = 60
+text = "10"
+
+[node name="TeleSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_a3b6f")

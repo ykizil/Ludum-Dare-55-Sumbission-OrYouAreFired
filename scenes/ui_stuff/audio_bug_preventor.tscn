@@ -1,0 +1,92 @@
+[gd_scene load_steps=5 format=3 uid="uid://cm2rivovudcuy"]
+
+[ext_resource type="Script" path="res://scripts/ui/AudioBugPreventor.gd" id="1_oggca"]
+
+[sub_resource type="Animation" id="Animation_aqraf"]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Muzik:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-80.0, -80.0, -12.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Muzik:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioBugPreventor/ColorRect:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_75i2w"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Muzik:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-12.0, -80.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioBugPreventor/ColorRect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wpji5"]
+_data = {
+"fade_in": SubResource("Animation_aqraf"),
+"fade_out": SubResource("Animation_75i2w")
+}
+
+[node name="AudioBugPreventor" type="AnimationPlayer"]
+libraries = {
+"": SubResource("AnimationLibrary_wpji5")
+}
+autoplay = "fade_in"
+script = ExtResource("1_oggca")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = 20
+z_as_relative = false
+offset_left = -4688.0
+offset_top = -3184.0
+offset_right = 6776.0
+offset_bottom = 3960.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)

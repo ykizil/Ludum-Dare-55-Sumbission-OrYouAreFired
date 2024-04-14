@@ -1,0 +1,103 @@
+[gd_scene load_steps=5 format=3 uid="uid://ctbr3pk40i1rb"]
+
+[ext_resource type="Texture2D" uid="uid://bhn6pis5e568c" path="res://sprites/summon_test_assets/summoner.png" id="1_p428r"]
+[ext_resource type="Script" path="res://scripts/SpeechBox.gd" id="2_f0y5b"]
+
+[sub_resource type="Animation" id="Animation_wkbwb"]
+resource_name = "text_appear"
+length = 2.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"clear_current_dialogue"
+}, {
+"args": [],
+"method": &"display_next_dialogue"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7bnpv"]
+_data = {
+"text_appear": SubResource("Animation_wkbwb")
+}
+
+[node name="Dialogue" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
+
+[node name="Control" type="Control" parent="Camera2D/CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Camera2D/CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -512.0
+offset_top = -512.0
+offset_right = 512.0
+offset_bottom = 512.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_p428r")
+
+[node name="SpeechBox" type="VBoxContainer" parent="Camera2D/CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 448.0
+offset_top = -248.0
+offset_right = -448.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("2_f0y5b")
+
+[node name="Speaker" type="RichTextLabel" parent="Camera2D/CanvasLayer/Control/SpeechBox"]
+layout_mode = 2
+bbcode_enabled = true
+fit_content = true
+
+[node name="Speech" type="RichTextLabel" parent="Camera2D/CanvasLayer/Control/SpeechBox"]
+layout_mode = 2
+bbcode_enabled = true
+fit_content = true
+visible_characters = 0
+visible_ratio = 0.85
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera2D/CanvasLayer/Control/SpeechBox"]
+root_node = NodePath("../Speech")
+libraries = {
+"": SubResource("AnimationLibrary_7bnpv")
+}

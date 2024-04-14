@@ -1,0 +1,248 @@
+[gd_scene load_steps=11 format=3 uid="uid://mtoqhgs2rg5m"]
+
+[ext_resource type="Script" path="res://scripts/SummonTarget.gd" id="1_ml56j"]
+[ext_resource type="Texture2D" uid="uid://bi5bgmni6n70u" path="res://sprites/summon_test_assets/penta.png" id="2_lvde6"]
+[ext_resource type="AudioStream" uid="uid://bbvaieni04wbn" path="res://audio/music/summon_answered.wav" id="3_drv5n"]
+[ext_resource type="Texture2D" uid="uid://thigi61b5rb3" path="res://sprites/summon_test_assets/demon_boss_happy.png" id="3_rxdbm"]
+[ext_resource type="Texture2D" uid="uid://cgnyo5octgsqq" path="res://sprites/summon_test_assets/summonfailed.png" id="5_ar2qq"]
+[ext_resource type="AudioStream" uid="uid://p0bmmif0xl4" path="res://audio/music/summonfailed.wav" id="5_g25jo"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gd54c"]
+radius = 24.0
+
+[sub_resource type="Animation" id="Animation_hjeph"]
+resource_name = "summon_answered"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SummonAnsweredUI:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_drv5n")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 3.14159, 6.28319]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.225352, 0.225352), Vector2(0.3, 0.3), Vector2(0.225352, 0.225352)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite2D:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.27451)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("SummonAnsweredUI/Sprite2D:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_dsq14"]
+resource_name = "summon_failed"
+length = 0.8
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.52, 0.68),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.27451)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.68, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("5_g25jo")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/2/use_blend = true
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D2/CanvasLayer/SummonFailedLabel:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.68, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4k672"]
+_data = {
+"summon_answered": SubResource("Animation_hjeph"),
+"summon_failed": SubResource("Animation_dsq14")
+}
+
+[node name="Target" type="Area2D"]
+modulate = Color(1, 1, 1, 0.27451)
+position = Vector2(-528, -272)
+script = ExtResource("1_ml56j")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 6.28319
+scale = Vector2(0.225352, 0.225352)
+texture = ExtResource("2_lvde6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_gd54c")
+
+[node name="PatienceTimer" type="Timer" parent="."]
+
+[node name="SummonAnsweredUI" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="SummonAnsweredUI"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(960, 312)
+texture = ExtResource("3_rxdbm")
+
+[node name="Label" type="RichTextLabel" parent="SummonAnsweredUI"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -680.0
+offset_top = -148.0
+offset_right = 680.0
+offset_bottom = 148.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[font_size=70][wave][pulse freq=20][center]SUMMONING ANSWERED![/center][/pulse][/wave][/font_size]"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_4k672")
+}
+
+[node name="TimeLeftLabel" type="Label" parent="."]
+z_index = 1
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 40
+text = "[Time Left]"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -6.0
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+z_index = 2
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("5_ar2qq")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Sprite2D2"]
+
+[node name="SummonFailedLabel" type="Label" parent="Sprite2D2/CanvasLayer"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -168.0
+offset_top = 12.0
+offset_right = 162.0
+offset_bottom = 207.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 70
+text = "SUMMON
+FAILED"
+horizontal_alignment = 1
+
+[node name="Sprite2D3" type="Sprite2D" parent="Sprite2D2/CanvasLayer/SummonFailedLabel"]
+z_index = 2
+position = Vector2(160, 232)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("5_ar2qq")
